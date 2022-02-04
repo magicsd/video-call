@@ -5,7 +5,7 @@ import Icon from '../icon'
 
 const cTableHead = 'border-b font-medium p-4 text-slate-400 text-left'
 
-const cTableData = 'p-4 text-slate-400 '
+const cTableData = 'p-4 text-slate-400'
 
 function Statistics({ calls, removeCall }) {
   const totalDuration = calls.reduce(
@@ -19,7 +19,7 @@ function Statistics({ calls, removeCall }) {
     <div className="p-5 space-y-4">
       <div className="font-semibold text-xl">Recent Calls</div>
 
-      <div className="shadow-sm rounded overflow-hidden">
+      <div className="shadow-sm rounded overflow-auto">
         <table className="border-collapse table-auto w-full text-sm">
           <thead className="bg-slate-100">
             <tr>
@@ -38,7 +38,10 @@ function Statistics({ calls, removeCall }) {
               }
 
               return (
-                <tr className="even:bg-slate-50" key={Number(call.startDate)}>
+                <tr
+                  className="even:bg-slate-50 hover:bg-yellow-50 transition-colors duration-150"
+                  key={Number(call.startDate)}
+                >
                   <td className={cTableData}>{index + 1}</td>
                   <td className={cTableData}>
                     {format(call.startDate, 'dd/MM/yyyy')}

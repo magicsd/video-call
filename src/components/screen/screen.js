@@ -1,6 +1,7 @@
 import { useLayoutEffect, useRef } from 'react'
+import classnames from 'classnames'
 
-function Screen({ setScreenRef, videoProps = {} }) {
+function Screen({ setScreenRef, className = 'h-[240px] w-[320px]', ...props }) {
   const ref = useRef(null)
 
   useLayoutEffect(() => {
@@ -8,7 +9,11 @@ function Screen({ setScreenRef, videoProps = {} }) {
   }, [])
 
   return (
-    <video className="h-[240px] rounded w-[320px]" ref={ref} {...videoProps} />
+    <video
+      className={classnames('rounded transition-all duration-500', className)}
+      ref={ref}
+      {...props}
+    />
   )
 }
 

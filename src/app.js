@@ -94,17 +94,21 @@ function App() {
   }
 
   return (
-    <div className="py-10">
-      <div className="bg-white shadow-xl rounded max-w-4xl mx-auto overflow-hidden">
-        <Header onStart={initializeApp} isOn={isReady} />
+    <div className="p-5">
+      <div className="bg-white shadow-xl rounded max-w-2xl mx-auto overflow-hidden w-full">
+        <Header
+          onStart={initializeApp}
+          isOn={isReady}
+          startCall={startCall}
+          endCall={endCall}
+          isCalling={isCalling}
+        />
         {isReady && (
           <>
             <Conference
               setLocalScreenRef={handleLocalScreenSet}
               setRemoteScreenRef={handleRemoteScreenSet}
               localStream={localStream}
-              startCall={startCall}
-              endCall={endCall}
               isCalling={isCalling}
             />
             {calls.length > 0 && (

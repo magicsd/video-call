@@ -1,27 +1,20 @@
-import CallControls from './call-controls'
 import Screen from '../screen/screen'
 
-function Conference({
-  setLocalScreenRef,
-  setRemoteScreenRef,
-  startCall,
-  endCall,
-  isCalling,
-}) {
+function Conference({ setLocalScreenRef, setRemoteScreenRef, isCalling }) {
   return (
-    <div className="flex justify-between p-5">
+    <div className="p-5 relative">
       <Screen
+        className={isCalling ? 'absolute top-8 right-8 w-[30%]' : 'w-full'}
         setScreenRef={setLocalScreenRef}
-        videoProps={{ playsInline: true, autoPlay: true, muted: true }}
-      />
-      <CallControls
-        isCalling={isCalling}
-        startCall={startCall}
-        endCall={endCall}
+        playsInline
+        autoPlay
+        muted
       />
       <Screen
+        className={isCalling ? 'w-full' : 'hidden'}
         setScreenRef={setRemoteScreenRef}
-        videoProps={{ playsInline: true, autoPlay: true }}
+        playsInline
+        autoPlay
       />
     </div>
   )
