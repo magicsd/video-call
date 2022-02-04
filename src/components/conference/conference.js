@@ -1,7 +1,5 @@
-import CallControls from './control/CallControls'
-import Screen from '../screen/Screen'
-
-import './Conference.css'
+import CallControls from './call-controls'
+import Screen from '../screen/screen'
 
 function Conference({
   setLocalScreenRef,
@@ -11,7 +9,7 @@ function Conference({
   isCalling,
 }) {
   return (
-    <div className="wrapper">
+    <div className="flex justify-between p-5">
       <Screen
         setScreenRef={setLocalScreenRef}
         videoProps={{ playsInline: true, autoPlay: true, muted: true }}

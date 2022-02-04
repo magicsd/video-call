@@ -1,5 +1,4 @@
 import { useLayoutEffect, useRef } from 'react'
-import './Screen.css'
 
 function Screen({ setScreenRef, videoProps = {} }) {
   const ref = useRef(null)
@@ -9,13 +8,7 @@ function Screen({ setScreenRef, videoProps = {} }) {
   }, [])
 
   return (
-    <div className="screen">
-      <video
-        ref={ref}
-        style={{ width: 320, height: 240, borderRadius: 15 }}
-        {...videoProps}
-      />
-    </div>
+    <video className="h-[240px] rounded w-[320px]" ref={ref} {...videoProps} />
   )
 }
 

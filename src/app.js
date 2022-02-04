@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
-import './App.css'
-import Header from './components/header/Header'
-import Conference from './components/conference/Conference'
-import Statistics from './components/statistics/Statistics'
-import Duration from './components/duration/Duration'
+import Header from './components/header/header'
+import Conference from './components/conference/conference'
+import Statistics from './components/statistics/statistics'
+
 import {
   onCreateOfferSuccess,
   onIceCandidate,
@@ -55,14 +54,14 @@ function App() {
     remotePeer = new RTCPeerConnection()
 
     localPeer.addEventListener('icecandidate', (e) =>
-      onIceCandidate(remotePeer, e)
+      onIceCandidate(remotePeer, e),
     )
     remotePeer.addEventListener('icecandidate', (e) =>
-      onIceCandidate(localPeer, e)
+      onIceCandidate(localPeer, e),
     )
 
     remotePeer.addEventListener('track', (event) =>
-      onRemoteStreamReceive(remoteScreenRef, event)
+      onRemoteStreamReceive(remoteScreenRef, event),
     )
 
     localStream
@@ -90,44 +89,30 @@ function App() {
     setIsCalling(false)
   }
 
-  const totalDuration = calls.reduce(
-    (acc, current) => acc + current.duration / 1000,
-    0
-  )
-  const averageDuration =
-    calls.length > 0 ? Math.floor(totalDuration / calls.length) : 0
-
   const removeCall = (date) => {
     setCalls(calls.filter((call) => call.startDate !== date))
   }
 
   return (
-    <div className="container">
-      <Header onStart={initializeApp} isOn={isReady} />
-      {isReady && (
-        <>
-          <Conference
-            setLocalScreenRef={handleLocalScreenSet}
-            setRemoteScreenRef={handleRemoteScreenSet}
-            localStream={localStream}
-            startCall={startCall}
-            endCall={endCall}
-            isCalling={isCalling}
-          />
-          {calls.length > 0 && (
-            <>
+    <div className="py-10">
+      <div className="bg-white shadow-xl rounded max-w-4xl mx-auto overflow-hidden">
+        <Header onStart={initializeApp} isOn={isReady} />
+        {isReady && (
+          <>
+            <Conference
+              setLocalScreenRef={handleLocalScreenSet}
+              setRemoteScreenRef={handleRemoteScreenSet}
+              localStream={localStream}
+              startCall={startCall}
+              endCall={endCall}
+              isCalling={isCalling}
+            />
+            {calls.length > 0 && (
               <Statistics calls={calls} removeCall={removeCall} />
-              <div style={{ marginTop: 24 }}>
-                <Duration title="Total Calls Duration:" time={totalDuration} />
-                <Duration
-                  title="Average Call Duration:"
-                  time={averageDuration}
-                />
-              </div>
-            </>
-          )}
-        </>
-      )}
+            )}
+          </>
+        )}
+      </div>
     </div>
   )
 }
