@@ -2,6 +2,7 @@
   "extends": [
     "react-app",
     "airbnb",
+    "airbnb/hooks",
     "plugin:jsx-a11y/recommended",
     "prettier"
   ],
@@ -14,9 +15,16 @@
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
+    "no-param-reassign": "warn",
+    "react/jsx-props-no-spreading": [1, { "html":  "ignore" }],
+    "react-hooks/exhaustive-deps": "warn",
+    "jsx-a11y/media-has-caption": "warn",
+    "import/prefer-default-export": "off",
     "prettier/prettier": [
       "error", {
-        "semi": false
+        "semi": false,
+        "trailingComma": "es5",
+        "singleQuote": true
       }
     ]
   }

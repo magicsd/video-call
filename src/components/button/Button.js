@@ -1,10 +1,10 @@
-import React from "react"
-import "./Button.css"
-import classnames from "classnames"
+import './Button.css'
 
-function Button({ children }) {
+import classnames from 'classnames'
+
+function Button({ children, variant = 'conference__button', ...props }) {
   return (
-    <button className={classnames("button")} type="button">
+    <button className={classnames('button', variant)} type="button" {...props}>
       {children}
     </button>
   )

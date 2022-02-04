@@ -1,14 +1,30 @@
-import CallControls from "./control/CallControls"
-import Screen from "../screen/Screen"
+import CallControls from './control/CallControls'
+import Screen from '../screen/Screen'
 
-import "./Conference.css"
+import './Conference.css'
 
-function Conference() {
+function Conference({
+  setLocalScreenRef,
+  setRemoteScreenRef,
+  startCall,
+  endCall,
+  isCalling,
+}) {
   return (
     <div className="wrapper">
-      <Screen id="localVideo" />
-      <CallControls />
-      <Screen id="remoteVideo" />
+      <Screen
+        setScreenRef={setLocalScreenRef}
+        videoProps={{ playsInline: true, autoPlay: true, muted: true }}
+      />
+      <CallControls
+        isCalling={isCalling}
+        startCall={startCall}
+        endCall={endCall}
+      />
+      <Screen
+        setScreenRef={setRemoteScreenRef}
+        videoProps={{ playsInline: true, autoPlay: true }}
+      />
     </div>
   )
 }

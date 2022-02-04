@@ -1,10 +1,13 @@
-import Button from "../../button/Button"
+import Button from '../../button/Button'
+import Stopwatch from '../../stopwatch/Stopwatch'
 
-function CallControls() {
+function CallControls({ startCall, endCall, isCalling }) {
   return (
     <div className="buttons__wrapper">
-      <Button>Start Call</Button>
-      <Button>End Call</Button>
+      <Button onClick={isCalling ? endCall : startCall} style={{ width: 150 }}>
+        {isCalling ? 'End Call' : 'Start Call'}
+      </Button>
+      {isCalling && <Stopwatch />}
     </div>
   )
 }

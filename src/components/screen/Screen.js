@@ -1,12 +1,20 @@
-import "./Screen.css"
+import { useLayoutEffect, useRef } from 'react'
+import './Screen.css'
 
-function Screen({ children }) {
+function Screen({ setScreenRef, videoProps = {} }) {
+  const ref = useRef(null)
+
+  useLayoutEffect(() => {
+    setScreenRef(ref)
+  }, [])
+
   return (
     <div className="screen">
-      <video playsinline autoPlay>
-        <track default kind="captions" srcLang="en" />
-        {children}
-      </video>
+      <video
+        ref={ref}
+        style={{ width: 320, height: 240, borderRadius: 15 }}
+        {...videoProps}
+      />
     </div>
   )
 }

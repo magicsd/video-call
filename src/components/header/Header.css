@@ -31,7 +31,3 @@
   background-color: rgb(238, 145, 145);
 }
 
-.header__button:active {
-  cursor: pointer;
-  background-color: rgb(245, 214, 214);
-}

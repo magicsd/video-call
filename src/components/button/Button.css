@@ -1,4 +1,4 @@
-.button {
+.conference__button {
   border-radius: 4px;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
   color: rgb(255, 255, 255);
@@ -15,14 +15,9 @@
   border: 1px solid rgb( 33, 126, 74 );
 }
 
-.button:hover {
+.conference__button:hover {
   cursor: pointer;
   background-color: rgb( 75, 183, 141 );
-}
-
-.button:active {
-  cursor: pointer;
-  background-color: rgb(245, 214, 214);
 }
 
 .buttons__wrapper {

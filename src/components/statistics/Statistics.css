@@ -43,8 +43,3 @@
   cursor: pointer;
   background-color: rgb( 75, 183, 141 );
 }
-
-.button__delete:active {
-  cursor: pointer;
-  background-color: rgb(245, 214, 214);
-}

@@ -1,10 +1,11 @@
-import "./Duration.css"
+import './Duration.css'
+import { getTime } from '../../helpers/get-time'
 
-function Duration({ children }) {
+function Duration({ title, time }) {
   return (
     <div className="duration__wrapper">
-      <h3>{children}</h3>
-      <div>{children}</div>
+      <div style={{ fontWeight: 600 }}>{title}</div>
+      <div>{getTime(time)}</div>
     </div>
   )
 }
