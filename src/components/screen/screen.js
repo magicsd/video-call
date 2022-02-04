@@ -10,7 +10,10 @@ function Screen({ setScreenRef, className = 'h-[240px] w-[320px]', ...props }) {
 
   return (
     <video
-      className={classnames('rounded transition-all duration-500', className)}
+      className={classnames(
+        'rounded-md transition-all duration-500',
+        className,
+      )}
       ref={ref}
       {...props}
     />

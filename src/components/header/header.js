@@ -1,9 +1,11 @@
 import Icon from '../icon'
+import Stopwatch from '../stopwatch/stopwatch'
 
 function Header({ onStart, isOn, isCalling, endCall, startCall }) {
   return (
-    <div className="flex h-20 items-center justify-between px-5">
-      <div className="font-semibold text-2xl">Magic Video Calls</div>
+    <div className="flex gap-4 h-20 items-center px-5">
+      <div className="font-semibold text-2xl flex-1">Magic Video Calls</div>
+
       {!isOn && (
         <Icon
           onClick={onStart}
@@ -15,12 +17,15 @@ function Header({ onStart, isOn, isCalling, endCall, startCall }) {
 
       {isOn &&
         (isCalling ? (
-          <Icon
-            onClick={endCall}
-            icon="cloud-offline"
-            className="text-red-700"
-            type="outline"
-          />
+          <>
+            <Stopwatch />
+            <Icon
+              onClick={endCall}
+              icon="cloud-offline"
+              className="text-red-700"
+              type="outline"
+            />
+          </>
         ) : (
           <Icon onClick={startCall} icon="call" className="text-green-700" />
         ))}
