@@ -3,7 +3,7 @@ import Stopwatch from '../stopwatch/stopwatch'
 
 function Header({ onStart, isOn, isCalling, endCall, startCall }) {
   return (
-    <div className="flex gap-4 h-16 pt-4 items-center px-5">
+    <div className="flex gap-4 h-16 items-center px-5">
       <div className="font-semibold text-2xl flex-1">Magic Video Calls</div>
 
       {!isOn && (
