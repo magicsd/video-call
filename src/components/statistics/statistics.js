@@ -1,11 +1,11 @@
 import format from 'date-fns/format'
 import { getTime } from '../../helpers/get-time'
-import Button from '../button/button'
-import Duration from '../duration/duration'
+import Duration from './duration'
+import Icon from '../icon'
 
 const cTableHead = 'border-b font-medium p-4 text-slate-400 text-left'
 
-const cTableData = 'px-4 text-slate-400 '
+const cTableData = 'p-4 text-slate-400 '
 
 function Statistics({ calls, removeCall }) {
   const totalDuration = calls.reduce(
@@ -16,8 +16,8 @@ function Statistics({ calls, removeCall }) {
     calls.length > 0 ? Math.floor(totalDuration / calls.length) : 0
 
   return (
-    <div className="p-5">
-      <div className="font-semibold text-xl mb-2">Recent Calls</div>
+    <div className="p-5 space-y-4">
+      <div className="font-semibold text-xl">Recent Calls</div>
 
       <div className="shadow-sm rounded overflow-hidden">
         <table className="border-collapse table-auto w-full text-sm">
@@ -53,12 +53,13 @@ function Statistics({ calls, removeCall }) {
                     {getTime(call.duration / 1000)}
                   </td>
                   <td className={cTableData}>
-                    <Button
-                      variant="button__delete"
+                    <Icon
                       onClick={handleRemoveClick}
-                    >
-                      Delete
-                    </Button>
+                      icon="trash"
+                      type="outline"
+                      size="xs"
+                      className="text-slate-700"
+                    />
                   </td>
                 </tr>
               )
@@ -67,7 +68,7 @@ function Statistics({ calls, removeCall }) {
         </table>
       </div>
 
-      <div style={{ marginTop: 24 }}>
+      <div className="text-slate-500 space-y-1 text-sm">
         <Duration title="Total Calls Duration:" time={totalDuration} />
         <Duration title="Average Call Duration:" time={averageDuration} />
       </div>
